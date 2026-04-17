@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #F3F4F8;
+  --color-ink: #1F2937;
+  --color-accent: #6366F1;
+  --color-muted: #9CA3AF;
+  --color-separator: #E5E7EB;
+  --color-surface: #FFFFFF;
+  --color-highlight: #EEF2FF;
+
+  --font-sans: "Nunito", ui-rounded, system-ui, sans-serif;
+  --font-serif: "Nunito", ui-rounded, system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  
+  /* Bloquer le zoom (pinch-zoom, double-tap zoom) mais autoriser le scroll */
+  touch-action: pan-y;
+  
+  /* Bloquer la sélection de texte (y compris le double clic et long press) */
+  -webkit-user-select: none;
+  user-select: none;
+  
+  /* Bloquer le menu de "callout" sur iOS (copier/coller, popup de lien) */
+  -webkit-touch-callout: none;
+}
+
+/* Autorise de pouvoir écrire dans les champs mais sans proposer la loupe ou la popup native copier/coller */
+input, textarea, select {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
