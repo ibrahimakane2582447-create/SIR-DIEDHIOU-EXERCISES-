@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 export type AnswerType = string | string[];
 
@@ -23,8 +24,8 @@ export const Input = ({ placeholder = "...", answer }: { placeholder?: string, a
   const correct = checkIsCorrect(val, answer);
   const showColor = val && blurred && answer !== undefined;
   const colorClass = showColor
-    ? (correct ? "border-green-400 text-green-700 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)]" : "border-red-400 text-red-700 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)]")
-    : "border-separator text-accent focus:border-accent bg-surface shadow-[0_4px_0_0_var(--color-highlight)]";
+    ? (correct ? "border-green-400 text-green-700 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)] -translate-y-1" : "border-red-400 text-red-700 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)] -translate-y-1")
+    : "border-separator text-accent bg-surface hover:border-accent/40 shadow-[0_2px_0_0_var(--color-separator)] focus:shadow-[0_4px_0_0_var(--color-accent)] focus:border-accent focus:-translate-y-1";
 
   return (
     <input 
@@ -33,7 +34,7 @@ export const Input = ({ placeholder = "...", answer }: { placeholder?: string, a
       value={val}
       onChange={(e) => { setVal(e.target.value); setBlurred(false); }}
       onBlur={() => setBlurred(true)}
-      className={`border-2 px-3 py-1.5 mx-1 font-bold text-base outline-none transition-all w-28 text-center placeholder-muted/40 rounded-xl ${colorClass}`}
+      className={`border-2 px-3 py-1.5 mx-1 font-bold text-base outline-none transition-all duration-200 w-28 text-center placeholder-muted/40 rounded-xl ${colorClass}`}
       autoComplete="off"
     />
   );
@@ -46,18 +47,18 @@ export const LongInput = ({ placeholder = "...", answer }: { placeholder?: strin
   const correct = checkIsCorrect(val, answer);
   const showColor = val && blurred && answer !== undefined;
   const colorClass = showColor
-    ? (correct ? "border-green-400 text-green-700 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)]" : "border-red-400 text-red-700 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)]")
-    : "border-separator text-accent focus:border-accent bg-surface shadow-[0_4px_0_0_var(--color-highlight)]";
+    ? (correct ? "border-green-400 text-green-700 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)] -translate-y-1" : "border-red-400 text-red-700 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)] -translate-y-1")
+    : "border-separator text-accent bg-surface hover:border-accent/40 shadow-[0_2px_0_0_var(--color-separator)] focus:shadow-[0_4px_0_0_var(--color-accent)] focus:border-accent focus:-translate-y-1";
 
   return (
-    <div className="mt-3 w-full">
+    <div className="mt-4 w-full mb-3">
       <input 
         type="text" 
         placeholder={placeholder}
         value={val}
         onChange={(e) => { setVal(e.target.value); setBlurred(false); }}
         onBlur={() => setBlurred(true)}
-        className={`border-2 px-4 py-3 font-bold text-base outline-none transition-all w-full placeholder-muted/40 rounded-xl ${colorClass} mb-2`}
+        className={`border-2 px-4 py-3 font-bold text-base outline-none transition-all w-full placeholder-muted/40 rounded-xl ${colorClass}`}
         autoComplete="off"
       />
     </div>
@@ -66,21 +67,53 @@ export const LongInput = ({ placeholder = "...", answer }: { placeholder?: strin
 
 export const Select = ({ options, answer }: { options: string[], answer?: AnswerType }) => {
   const [val, setVal] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const correct = checkIsCorrect(val, answer);
   const showColor = val && answer !== undefined;
   const colorClass = showColor
-    ? (correct ? "border-green-400 text-green-700 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)]" : "border-red-400 text-red-700 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)]")
-    : "border-separator text-accent focus:border-accent bg-surface shadow-[0_4px_0_0_var(--color-highlight)]";
+    ? (correct ? "border-green-400 text-green-800 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)]" : "border-red-400 text-red-800 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)]")
+    : isOpen 
+      ? "border-accent text-accent bg-surface shadow-[0_4px_0_0_var(--color-accent)]"
+      : "border-separator text-accent bg-surface hover:border-accent/40 shadow-[0_2px_0_0_var(--color-separator)]";
 
   return (
-    <select 
-      value={val}
-      onChange={(e) => setVal(e.target.value)}
-      className={`border-2 px-3 py-1.5 mx-1 font-bold text-base outline-none transition-all cursor-pointer rounded-xl mb-1 ${colorClass}`}
-    >
-      <option value=""></option>
-      {options.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
-    </select>
+    <div className="relative inline-block mx-1 align-middle" ref={wrapperRef}>
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`border-2 px-4 py-1.5 min-w-[80px] font-bold text-base outline-none transition-all duration-200 cursor-pointer rounded-xl flex items-center justify-between gap-2 select-none ${colorClass} ${isOpen || showColor ? '-translate-y-1' : ''}`}
+      >
+        <span className={val ? "opacity-100" : "opacity-40"}>{val || "..."}</span>
+        <ChevronDown size={16} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+      </div>
+      
+      {isOpen && (
+        <div className="absolute z-50 top-full mt-2 left-0 min-w-max w-full bg-surface border-2 border-separator rounded-xl overflow-hidden shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="max-h-48 overflow-y-auto">
+            {options.map((opt, i) => (
+              <div 
+                key={i} 
+                onClick={() => { setVal(opt); setIsOpen(false); }}
+                className={`px-4 py-2 hover:bg-highlight cursor-pointer font-bold text-ink whitespace-nowrap transition-colors ${val === opt ? 'bg-highlight text-accent' : ''}`}
+              >
+                {opt}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

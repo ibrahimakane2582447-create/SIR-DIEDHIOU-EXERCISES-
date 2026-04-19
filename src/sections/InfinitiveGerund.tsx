@@ -1,6 +1,25 @@
+import React, { useState } from 'react';
 import { Input, Question, SectionTitle, Select } from '../components/FormElements';
+import { RotateCw, Maximize } from 'lucide-react';
 
 export function InfinitiveGerund() {
+  const toggleFullscreenAndRotate = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+        if (window.screen && window.screen.orientation && window.screen.orientation.lock) {
+          await window.screen.orientation.lock('landscape');
+        }
+      } else {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      alert("La rotation automatique n'est pas supportée par votre navigateur actuel. Veuillez pencher votre téléphone manuellement.");
+    }
+  };
   return (
     <div>
       <SectionTitle>Choose a) or b) to complete these sentenses</SectionTitle>
@@ -43,6 +62,15 @@ export function InfinitiveGerund() {
       <Question>Let’s <Input answer="believe" /> in God. (to believe)</Question>
 
       <SectionTitle>Complete this table with verbs or expressions</SectionTitle>
+      <div className="mb-4 flex justify-end">
+        <button 
+          onClick={toggleFullscreenAndRotate}
+          className="flex items-center gap-2 bg-highlight hover:bg-accent hover:text-white text-accent px-4 py-2 rounded-xl font-bold transition-colors border-2 border-accent/20 hover:border-accent"
+        >
+          <RotateCw size={18} />
+          <span>Rotation écran</span>
+        </button>
+      </div>
       <div className="overflow-x-auto text-sm bg-surface rounded-2xl shadow-sm border-2 border-separator/50">
         <table className="min-w-full text-left">
           <thead className="bg-highlight text-accent uppercase text-xs tracking-wider border-b-2 border-separator/50">

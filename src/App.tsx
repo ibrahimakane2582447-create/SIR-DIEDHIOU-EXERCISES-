@@ -50,10 +50,10 @@ export default function App() {
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4"></div>
         
         <span className="font-bold text-xs uppercase tracking-widest mb-3 opacity-90 block bg-white/20 px-4 py-1.5 rounded-full z-10 backdrop-blur-sm">
-          Mr Diedhiou • Rahman Courses
+          Mr DIEDHIOU
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight text-center z-10">
-          English Masterclass
+          EXERCICES ANGLAIS
         </h1>
       </header>
 
