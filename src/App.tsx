@@ -40,7 +40,7 @@ function AccordionSection({ title, children }: { title: string; children: React.
 export default function App() {
   return (
     <div 
-      className="min-h-screen bg-paper font-sans select-none pb-24 text-ink flex flex-col"
+      className="min-h-screen bg-paper font-sans select-none pb-24 text-ink flex flex-col overflow-x-hidden w-full"
       onCopy={(e) => e.preventDefault()}
       onCut={(e) => e.preventDefault()}
       onPaste={(e) => e.preventDefault()}

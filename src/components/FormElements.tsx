@@ -129,13 +129,13 @@ export const Select = ({ options, answer }: { options: string[], answer?: Answer
       </div>
       
       {isOpen && (
-        <div className="absolute z-50 top-full mt-2 left-0 min-w-max w-full bg-surface border-2 border-separator rounded-xl overflow-hidden shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="absolute z-50 top-full mt-2 left-0 min-w-[200px] max-w-[85vw] bg-surface border-2 border-separator rounded-xl overflow-hidden shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="max-h-48 overflow-y-auto">
             {options.map((opt, i) => (
               <div 
                 key={i} 
                 onClick={() => { setVal(opt); setIsOpen(false); }}
-                className={`px-4 py-2 hover:bg-highlight cursor-pointer font-bold text-ink whitespace-nowrap transition-colors ${val === opt ? 'bg-highlight text-accent' : ''}`}
+                className={`px-4 py-2 hover:bg-highlight cursor-pointer font-bold text-ink whitespace-normal break-words leading-snug transition-colors ${val === opt ? 'bg-highlight text-accent' : ''}`}
               >
                 {opt}
               </div>
@@ -149,8 +149,8 @@ export const Select = ({ options, answer }: { options: string[], answer?: Answer
 
 export const Question = ({ num, children }: { num?: string | number, children: React.ReactNode }) => {
   return (
-    <div className="mb-5 p-5 bg-surface/80 border-2 border-separator/50 shadow-sm transition-all hover:bg-surface rounded-2xl">
-      <div className="font-bold text-base sm:text-lg leading-loose text-ink">
+    <div className="mb-5 p-4 sm:p-5 bg-surface/80 border-2 border-separator/50 shadow-sm transition-all hover:bg-surface rounded-2xl w-full">
+      <div className="font-bold text-base sm:text-lg leading-loose text-ink whitespace-normal break-words" style={{ overflowWrap: 'anywhere' }}>
         {num && <span className="mr-2 text-accent">{num}.</span>}
         {children}
       </div>
