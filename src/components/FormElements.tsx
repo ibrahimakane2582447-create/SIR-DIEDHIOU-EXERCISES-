@@ -24,14 +24,14 @@ export const Input = ({ placeholder = "...", answer }: { placeholder?: string, a
   const correct = checkIsCorrect(val, answer);
   const showColor = val && blurred && answer !== undefined;
   const isWrong = showColor && !correct;
-  const correctionText = Array.isArray(answer) ? answer.join(" or ") : answer;
+  const correctionText = Array.isArray(answer) ? answer[0] : answer;
 
   const colorClass = showColor
     ? (correct ? "border-green-400 text-green-700 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)]" : "border-red-400 text-red-700 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)] line-through")
     : "border-separator text-accent bg-surface hover:border-accent/40 shadow-[0_2px_0_0_var(--color-separator)] focus:shadow-[0_4px_0_0_var(--color-accent)] focus:border-accent focus:-translate-y-1";
 
   return (
-    <span className="inline-flex items-center mx-1 align-middle gap-2">
+    <span className="inline-flex items-center mx-1 align-middle gap-2 flex-wrap justify-center sm:justify-start">
       <input 
         type="text" 
         placeholder={placeholder}
@@ -42,7 +42,7 @@ export const Input = ({ placeholder = "...", answer }: { placeholder?: string, a
         autoComplete="off"
       />
       {isWrong && (
-        <span className="inline-flex items-center justify-center bg-green-100 text-green-700 border-2 border-green-400 font-bold text-[16px] px-3 py-1.5 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-nowrap">
+        <span className="inline-flex items-center justify-center bg-green-100 text-green-700 border-2 border-green-400 font-bold text-[16px] px-3 py-1.5 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-normal break-words text-left leading-snug">
           {correctionText}
         </span>
       )}
@@ -57,25 +57,25 @@ export const LongInput = ({ placeholder = "...", answer }: { placeholder?: strin
   const correct = checkIsCorrect(val, answer);
   const showColor = val && blurred && answer !== undefined;
   const isWrong = showColor && !correct;
-  const correctionText = Array.isArray(answer) ? answer.join(" or ") : answer;
+  const correctionText = Array.isArray(answer) ? answer[0] : answer;
 
   const colorClass = showColor
     ? (correct ? "border-green-400 text-green-700 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)]" : "border-red-400 text-red-700 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)] line-through")
     : "border-separator text-accent bg-surface hover:border-accent/40 shadow-[0_2px_0_0_var(--color-separator)] focus:shadow-[0_4px_0_0_var(--color-accent)] focus:border-accent focus:-translate-y-1";
 
   return (
-    <div className="mt-4 w-full mb-3 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+    <div className="mt-4 w-full mb-3 flex flex-col gap-2">
       <input 
         type="text" 
         placeholder={placeholder}
         value={val}
         onChange={(e) => { setVal(e.target.value); setBlurred(false); }}
         onBlur={() => setBlurred(true)}
-        className={`border-2 px-4 py-3 font-bold text-[16px] outline-none transition-all flex-1 placeholder-muted/40 rounded-xl ${colorClass}`}
+        className={`border-2 px-4 py-3 font-bold text-[16px] outline-none transition-all w-full placeholder-muted/40 rounded-xl ${colorClass}`}
         autoComplete="off"
       />
       {isWrong && (
-        <span className="inline-flex items-center justify-center bg-green-100 text-green-700 border-2 border-green-400 font-bold text-[16px] px-4 py-3 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-nowrap">
+        <span className="inline-flex items-center justify-start bg-green-100 text-green-700 border-2 border-green-400 font-bold text-[16px] px-4 py-3 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-normal break-words text-left leading-snug w-full">
           {correctionText}
         </span>
       )}
@@ -101,7 +101,7 @@ export const Select = ({ options, answer }: { options: string[], answer?: Answer
   const correct = checkIsCorrect(val, answer);
   const showColor = val && answer !== undefined;
   const isWrong = showColor && !correct;
-  const correctionText = Array.isArray(answer) ? answer.join(" or ") : answer;
+  const correctionText = Array.isArray(answer) ? answer[0] : answer;
 
   const colorClass = showColor
     ? (correct ? "border-green-400 text-green-800 bg-green-100 shadow-[0_4px_0_0_rgb(74,222,128)]" : "border-red-400 text-red-800 bg-red-100 shadow-[0_4px_0_0_rgb(248,113,113)]")
@@ -111,7 +111,7 @@ export const Select = ({ options, answer }: { options: string[], answer?: Answer
 
   return (
     <div className="relative inline-block mx-1 align-middle" ref={wrapperRef}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+      <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-2 flex-wrap">
         <div 
           onClick={() => setIsOpen(!isOpen)}
           className={`border-2 px-4 py-1.5 min-w-[80px] font-bold text-[16px] outline-none transition-all duration-200 cursor-pointer rounded-xl flex items-center justify-between gap-2 select-none ${colorClass} ${isOpen || showColor ? '-translate-y-1' : ''}`}
@@ -122,7 +122,7 @@ export const Select = ({ options, answer }: { options: string[], answer?: Answer
           <ChevronDown size={16} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} ${isWrong ? 'hidden' : ''}`} />
         </div>
         {isWrong && (
-          <span className="inline-flex items-center justify-center bg-green-100 text-green-800 border-2 border-green-400 font-bold text-[16px] px-3 py-1.5 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-nowrap">
+          <span className="inline-flex items-center justify-center bg-green-100 text-green-800 border-2 border-green-400 font-bold text-[16px] px-3 py-1.5 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-normal break-words text-left leading-snug">
             {correctionText}
           </span>
         )}
