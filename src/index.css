@@ -46,3 +46,13 @@ input, textarea, select {
     font-size: 16px !important;
   }
 }
+
+/* Masquer les bulles et barres d'outils injectées par Vercel */
+vercel-live-feedback,
+vercel-toolbar,
+#vercel-live-button,
+#vercel-settings-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
