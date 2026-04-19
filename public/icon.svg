@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <circle cx="256" cy="256" r="240" fill="#091C5A" stroke="#C59C38" stroke-width="16"/>
+  <rect x="100" y="320" width="312" height="120" rx="60" fill="#ffffff" stroke="#C59C38" stroke-width="12"/>
+  <text x="256" y="380" font-family="system-ui, sans-serif" font-weight="900" font-size="44" fill="#091C5A" text-anchor="middle" dominant-baseline="middle">Mr DIEDHIOU</text>
+  <text x="256" y="415" font-family="system-ui, sans-serif" font-weight="bold" font-size="22" fill="#091C5A" text-anchor="middle" dominant-baseline="middle">EXERCICES ANGLAIS</text>
+  <path d="M256 120 C180 120, 160 180, 160 220 C160 270, 200 300, 256 300 C312 300, 352 270, 352 220 C352 180, 332 120, 256 120" fill="#5AACE6" stroke="#1F2937" stroke-width="8"/>
+  <circle cx="216" cy="190" r="12" fill="#FFFFFF"/>
+  <circle cx="296" cy="190" r="12" fill="#FFFFFF"/>
+  <circle cx="216" cy="190" r="6" fill="#1F2937"/>
+  <circle cx="296" cy="190" r="6" fill="#1F2937"/>
+  <path d="M226 250 Q256 280 286 250" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+</svg>

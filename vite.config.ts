@@ -13,7 +13,7 @@ export default defineConfig(({mode}) => {
       VitePWA({
         registerType: 'autoUpdate',
         injectRegister: 'auto',
-        includeAssets: ['icon.png'],
+        includeAssets: ['icon.svg'],
         manifest: {
           name: 'Sir Diedhiou English Masterclass',
           short_name: 'Sir Diedhiou',
@@ -23,14 +23,10 @@ export default defineConfig(({mode}) => {
           display: 'standalone',
           icons: [
             {
-              src: 'icon.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: 'icon.png',
-              sizes: '512x512',
-              type: 'image/png'
+              src: 'icon.svg',
+              sizes: '48x48 72x72 96x96 128x128 256x256 512x512',
+              type: 'image/svg+xml',
+              purpose: 'any maskable'
             }
           ]
         },
