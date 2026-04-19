@@ -36,3 +36,13 @@ input, textarea, select {
   -webkit-user-select: auto;
   user-select: auto;
 }
+
+@media screen and (max-width: 768px) {
+  input[type="text"], 
+  input[type="number"], 
+  input[type="email"], 
+  select, 
+  textarea {
+    font-size: 16px !important;
+  }
+}
