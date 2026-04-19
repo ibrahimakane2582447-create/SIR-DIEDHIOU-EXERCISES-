@@ -65,14 +65,20 @@ export const LongInput = ({ placeholder = "...", answer }: { placeholder?: strin
 
   return (
     <div className="mt-4 w-full mb-3 flex flex-col gap-2">
-      <input 
-        type="text" 
+      <textarea 
         placeholder={placeholder}
         value={val}
-        onChange={(e) => { setVal(e.target.value); setBlurred(false); }}
+        onChange={(e) => { 
+          setVal(e.target.value); 
+          setBlurred(false); 
+          e.target.style.height = 'auto'; 
+          e.target.style.height = e.target.scrollHeight + 'px'; 
+        }}
         onBlur={() => setBlurred(true)}
-        className={`border-2 px-4 py-3 font-bold text-[16px] outline-none transition-all w-full placeholder-muted/40 rounded-xl ${colorClass}`}
+        className={`border-2 px-4 py-3 font-bold text-[16px] outline-none transition-all w-full placeholder-muted/40 rounded-xl resize-none overflow-hidden ${colorClass}`}
         autoComplete="off"
+        rows={1}
+        style={{ minHeight: '52px' }}
       />
       {isWrong && (
         <span className="inline-flex items-center justify-start bg-green-100 text-green-700 border-2 border-green-400 font-bold text-[16px] px-4 py-3 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-normal break-words text-left leading-snug w-full">
@@ -114,12 +120,12 @@ export const Select = ({ options, answer }: { options: string[], answer?: Answer
       <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-2 flex-wrap">
         <div 
           onClick={() => setIsOpen(!isOpen)}
-          className={`border-2 px-4 py-1.5 min-w-[80px] font-bold text-[16px] outline-none transition-all duration-200 cursor-pointer rounded-xl flex items-center justify-between gap-2 select-none ${colorClass} ${isOpen || showColor ? '-translate-y-1' : ''}`}
+          className={`border-2 px-4 py-2 min-w-[80px] font-bold text-[16px] outline-none transition-all duration-200 cursor-pointer rounded-xl flex items-center justify-between gap-2 select-none h-auto ${colorClass} ${isOpen || showColor ? '-translate-y-1' : ''}`}
         >
-          <div className="flex items-center gap-2">
-            <span className={val ? (isWrong ? "line-through opacity-80" : "opacity-100") : "opacity-40"}>{val || "..."}</span>
+          <div className="flex items-center gap-2 flex-1">
+            <span className={`whitespace-normal break-words text-left flex-1 ${val ? (isWrong ? "line-through opacity-80" : "opacity-100") : "opacity-40"}`}>{val || "..."}</span>
           </div>
-          <ChevronDown size={16} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} ${isWrong ? 'hidden' : ''}`} />
+          <ChevronDown size={16} className={`transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''} ${isWrong ? 'hidden' : ''}`} />
         </div>
         {isWrong && (
           <span className="inline-flex items-center justify-center bg-green-100 text-green-800 border-2 border-green-400 font-bold text-[16px] px-3 py-1.5 rounded-xl shadow-[0_4px_0_0_rgb(74,222,128)] whitespace-normal break-words text-left leading-snug">
