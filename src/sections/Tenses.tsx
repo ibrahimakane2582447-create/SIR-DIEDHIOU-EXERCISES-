@@ -80,7 +80,7 @@ export function Tenses() {
 
       <SectionTitle>C) Put the verbs in parentheses into the appropriate tenses</SectionTitle>
       <Question>What a game! I (to watch,never) <Input answer="have never watched" /> such a game.</Question>
-      <Question>Things (to change) <Input answer={["are changing", "have changed", "changed"]} /> at the Company. When we (to start) <Input answer="started" /> working here three years ago, it (to have,only) sixteen employees. Since then, we (to expend) <Input answer="have expanded" /> to include more than fifty full-time workers.</Question>
+      <Question>Things (to change) <Input answer={["are changing", "have changed", "changed"]} /> at the Company. When we (to start) <Input answer="started" /> working here three years ago, it (to have,only) <Input answer="had only" /> sixteen employees. Since then, we (to expend) <Input answer={["have expanded", "have expanded"]} /> to include more than fifty full-time workers.</Question>
       <Question>This paper (appear) <Input answer="appears" /> twice weekly.</Question>
       <Question>He (to work) <Input answer="has been working" /> here for the last five years.</Question>
       <Question>Don’t disturb me! I (to learn) <Input answer="am learning" /> my lessons.</Question>

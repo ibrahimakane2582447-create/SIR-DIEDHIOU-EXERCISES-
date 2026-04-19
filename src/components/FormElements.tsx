@@ -168,3 +168,42 @@ export const SectionTitle = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
+
+import { RotateCw } from 'lucide-react';
+
+export const TableWrapper = ({ children }: { children: React.ReactNode }) => {
+  const toggleFullscreenAndRotate = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+        if (window.screen && window.screen.orientation && (window.screen.orientation as any).lock) {
+          await (window.screen.orientation as any).lock('landscape');
+        }
+      } else {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      alert("La rotation automatique n'est pas supportée par votre navigateur actuel. Veuillez pencher votre téléphone manuellement.");
+    }
+  };
+
+  return (
+    <div className="w-full my-6">
+      <div className="mb-4 flex justify-end">
+        <button 
+          onClick={toggleFullscreenAndRotate}
+          className="flex items-center gap-2 bg-highlight hover:bg-accent hover:text-white text-accent px-4 py-2 rounded-xl font-bold transition-colors border-2 border-accent/20 hover:border-accent"
+        >
+          <RotateCw size={18} />
+          <span>Rotation écran</span>
+        </button>
+      </div>
+      <div className="overflow-x-auto text-sm bg-surface rounded-2xl shadow-sm border-2 border-separator/50">
+        {children}
+      </div>
+    </div>
+  );
+};

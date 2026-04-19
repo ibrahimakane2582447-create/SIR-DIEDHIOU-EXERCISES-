@@ -25,38 +25,38 @@ export function IfClauses() {
       <SectionTitle>c) Reformulate these sentences using if or unless</SectionTitle>
       <Question>
         Awa is sick. She doesn’t come today.
-        <LongInput placeholder="If she..." />
-        <LongInput placeholder="Unless she..." />
+        <LongInput placeholder="If she..." answer={["If she wasn't sick, she would come today.", "If she were not sick, she would come today.", "If she wasn't sick, she would come."]} />
+        <LongInput placeholder="Unless she..." answer={["Unless she is sick, she will come today.", "Unless she is sick, she comes."]} />
       </Question>
       <Question>
         They lost the game because they didn’t play well.
-        <LongInput placeholder="If they..." />
-        <LongInput placeholder="Unless they..." />
+        <LongInput placeholder="If they..." answer={["If they had played well, they wouldn't have lost the game.", "If they had played well, they would not have lost."]} />
+        <LongInput placeholder="Unless they..." answer={["Unless they had played well, they would have lost the game.", "Unless they had played well, they would have lost."]} />
       </Question>
       <Question>
         He gives up school because of his illness.
-        <LongInput placeholder="If he..." />
-        <LongInput placeholder="Unless he..." />
+        <LongInput placeholder="If he..." answer={["If he wasn't ill, he wouldn't give up school.", "If he weren't ill, he wouldn't give up school.", "If he wasn't sick, he wouldn't give up school."]} />
+        <LongInput placeholder="Unless he..." answer={["Unless he improves, he will give up school.", "Unless he is cured, he will give up school."]} />
       </Question>
       <Question>
         He gave up school because he was sick.
-        <LongInput placeholder="If he..." />
-        <LongInput placeholder="Unless he..." />
+        <LongInput placeholder="If he..." answer={["If he hadn't been sick, he wouldn't have given up school.", "If he had not been sick, he would not have given up school."]} />
+        <LongInput placeholder="Unless he..." answer={["Unless he had been sick, he wouldn't have given up school.", "Unless he had been ill, he wouldn't have given up school."]} />
       </Question>
       <Question>
         We can’t go out. It’s raining.
-        <LongInput placeholder="If it..." />
-        <LongInput placeholder="Unless it..." />
+        <LongInput placeholder="If it..." answer={["If it wasn't raining, we could go out.", "If it weren't raining, we could go out.", "If it stopped raining, we could go out."]} />
+        <LongInput placeholder="Unless it..." answer={["Unless it stops raining, we can't go out.", "Unless it is raining, we can go out."]} />
       </Question>
       <Question>
         Learn your lesons otherwise the teacher punishes you.
-        <LongInput placeholder="If you..." />
-        <LongInput placeholder="Unless you..." />
+        <LongInput placeholder="If you..." answer={["If you don't learn your lessons, the teacher will punish you.", "If you learn your lessons, the teacher won't punish you."]} />
+        <LongInput placeholder="Unless you..." answer={["Unless you learn your lessons, the teacher will punish you.", "Unless you study, the teacher will punish you."]} />
       </Question>
       <Question>
         I didn’t know the answer. Therefore, I couldn’t tell you anything.
-        <LongInput placeholder="If I..." />
-        <LongInput placeholder="Unless I..." />
+        <LongInput placeholder="If I..." answer={["If I had known the answer, I could have told you something.", "If I had known the answer, I would have told you."]} />
+        <LongInput placeholder="Unless I..." answer={["Unless I had known the answer, I couldn't have told you anything.", "Unless I knew the answer, I couldn't tell you anything."]} />
       </Question>
 
       <SectionTitle>d) Complete with the correct tense. Then say what type of conditional is each sentence( 0,1st ,2nd ,3rd ).</SectionTitle>

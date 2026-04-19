@@ -18,43 +18,43 @@ export function PassiveActive() {
       <SectionTitle>Change the following sentences either into active or passive voice</SectionTitle>
       <Question>
         Most Senegalese women watched « famille senegalaise ».
-        <LongInput placeholder="Famille senegalese..." />
+        <LongInput placeholder="Famille senegalese..." answer={["Famille senegalaise was watched by most Senegalese women.", "Famille senegalaise was watched by most Senegalese women"]} />
       </Question>
       <Question>
         He fixes my watch.
-        <LongInput placeholder="My watch..." />
+        <LongInput placeholder="My watch..." answer={["My watch is fixed by him.", "My watch is fixed by him"]} />
       </Question>
       <Question>
         They keep me waiting.
-        <LongInput placeholder="I..." />
+        <LongInput placeholder="I..." answer={["I am kept waiting by them.", "I am kept waiting.", "I am kept waiting by them"]} />
       </Question>
       <Question>
         The lion was killed.
-        <LongInput placeholder="They..." />
+        <LongInput placeholder="They..." answer={["They killed the lion.", "They killed the lion"]} />
       </Question>
       <Question>
         Someone cleans the room every Monday.
-        <LongInput placeholder="The room..." />
+        <LongInput placeholder="The room..." answer={["The room is cleaned every Monday.", "The room is cleaned by someone every Monday.", "The room is cleaned every Monday"]} />
       </Question>
       <Question>
         At the end of the yea, the best among you will be rewarded.
-        <LongInput placeholder="They..." />
+        <LongInput placeholder="They..." answer={["They will reward the best among you at the end of the year.", "They will reward the best among you at the end of the year"]} />
       </Question>
       <Question>
         Christophe Colombe discovered America in 1492.
-        <LongInput placeholder="America..." />
+        <LongInput placeholder="America..." answer={["America was discovered by Christophe Colombe in 1492.", "America was discovered by Christophe Colombe in 1492"]} />
       </Question>
       <Question>
         This exercise book is written by Mr Diedhiou.
-        <LongInput placeholder="Mr Diedhiou..." />
+        <LongInput placeholder="Mr Diedhiou..." answer={["Mr Diedhiou writes this exercise book.", "Mr Diedhiou writes this exercise book"]} />
       </Question>
       <Question>
         The meeting has been just postponed.
-        <LongInput placeholder="They..." />
+        <LongInput placeholder="They..." answer={["They have just postponed the meeting.", "They've just postponed the meeting.", "They have just postponed the meeting"]} />
       </Question>
       <Question>
         Careless driving had caused many death.
-        <LongInput placeholder="Many death..." />
+        <LongInput placeholder="Many death..." answer={["Many deaths had been caused by careless driving.", "Many death had been caused by careless driving.", "Many death had been caused by careless driving"]} />
       </Question>
 
       <SectionTitle>Complete the sentences with a passive construction</SectionTitle>
