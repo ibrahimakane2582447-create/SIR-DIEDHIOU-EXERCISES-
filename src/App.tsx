@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { InstallPrompt } from './components/InstallPrompt';
 import { Pronouns } from './sections/Pronouns';
 import { Auxiliaries } from './sections/Auxiliaries';
 import { Tags } from './sections/Tags';
@@ -39,12 +40,13 @@ function AccordionSection({ title, children }: { title: string; children: React.
 export default function App() {
   return (
     <div 
-      className="min-h-screen bg-paper font-sans select-none pb-24 text-ink"
+      className="min-h-screen bg-paper font-sans select-none pb-24 text-ink flex flex-col"
       onCopy={(e) => e.preventDefault()}
       onCut={(e) => e.preventDefault()}
       onPaste={(e) => e.preventDefault()}
       onContextMenu={(e) => e.preventDefault()}
     >
+      <InstallPrompt />
       <header className="px-6 py-12 md:px-8 bg-accent text-white flex flex-col justify-center items-center shadow-md rounded-b-[40px] mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4"></div>
